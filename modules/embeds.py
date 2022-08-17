@@ -117,21 +117,19 @@ def generate_plot(data: dict):
 
     ax.barh(y_pos, performance, align='center', color=(1, 1, 1, 1))
     ax.set_yticks(y_pos, labels=people)
-    ax.invert_yaxis()  # labels read top-to-bottom
 
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
     ax.get_xaxis().set_ticks([])
-    plt.gca().invert_yaxis()
 
     ax.set_facecolor((47 / 255, 49 / 255, 54 / 255))
     fig.set_facecolor((47 / 255, 49 / 255, 54 / 255))
     plt.tick_params(left=False)
     ax.tick_params(colors='white', which='both', labelsize=14)
 
-    for bar, value in zip(ax.patches, performance[::-1]):
+    for bar, value in zip(ax.patches, performance):
         t = ax.text(0.5, bar.get_y() + bar.get_height() / 2, f"{value} Ratings", color='black', ha='left', va='center')
         t.set_bbox(dict(facecolor=(1, 1, 1, 0.5), edgecolor=(0, 0, 0, 0)))
 

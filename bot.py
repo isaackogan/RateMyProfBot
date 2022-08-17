@@ -74,11 +74,11 @@ class RateMyProfBot(discord.Bot):
 bot: RateMyProfBot = RateMyProfBot()
 
 
-@bot.slash_command(name="prof", description="Search a professor on the RateMyProf website")
+@bot.slash_command(name="prof2", description="Search a professor on the RateMyProf website", guild_ids=[922231395605159987])
 @commands.cooldown(3, 30, commands.BucketType.user)
 @commands.cooldown(60, 3600, commands.BucketType.user)
 @commands.cooldown(250, 3600, commands.BucketType.guild)
-async def prof(context: ApplicationContext, name) -> Any:
+async def prof2(context: ApplicationContext, name) -> Any:
     """
     Search a professor by their name
 
