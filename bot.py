@@ -64,6 +64,7 @@ class RateMyProfBot(discord.Bot):
         # If the command cooldown is reached
         if isinstance(exception, CommandOnCooldown):
             return await context.respond(
+                ephemeral=True,
                 embed=fail_embed(context.user, f"You are on cooldown! Try again in `{round(exception.retry_after, 1):,}` seconds.")
             )
 
@@ -90,7 +91,7 @@ async def prof(context: ApplicationContext, name) -> Any:
     # Get teacher list
     teachers: Optional[List[dict]] = await bot.safe_function(functools.partial(RateMyProfAPI.search_teacher, name=name))
     if not teachers:
-        return await context.respond(embed=fail_embed(context.user, "Failed to retrieve the list of teachers."))
+        return await context.respond(ephemeral=True, embed=fail_embed(context.user, "Failed to retrieve the list of teachers."))
 
     # Send the teacher select menu
     await context.respond(embed=prof_list_embed(), view=teacher_list_view(teachers, select_prof))
