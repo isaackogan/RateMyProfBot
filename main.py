@@ -133,5 +133,10 @@ async def select_prof(select: Select, interaction: Interaction) -> None:
 
 
 if __name__ == '__main__':
-    # Invite via https://discord.com/api/oauth2/authorize?client_id=1009311082222977114&permissions=3288853584&scope=bot%20applications.commands
+    """
+    Invite URL:
+    https://discord.com/api/oauth2/authorize?client_id=1009311082222977114&permissions=274878024704&scope=bot%20applications.commands
+    
+    """
+
     bot.run(open("./resources/token.txt").read())
